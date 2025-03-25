@@ -12,9 +12,10 @@ import { RecommendView } from "./RecommendView";
 import { PicaApi2 } from "../../api/api";
 import { PicaComicDetail, PicaEpisode } from "../../api/model";
 import { navigateTo, previewImage } from "minip-bridge";
+import { HandleImg } from "../../utils";
 
 function ComicDetailView({ comic }: { comic: PicaComicDetail }) {
-  const imgSrc = comic.thumb.fileServer + "/static/" + comic.thumb.path;
+  const imgSrc = HandleImg(comic.thumb);
   const [episodes, setEpisodes] = createSignal<Array<PicaEpisode>>([]);
   const [page, setPage] = createSignal(0);
   const [total, setTotal] = createSignal(0);
@@ -73,7 +74,7 @@ function ComicDetailView({ comic }: { comic: PicaComicDetail }) {
                 "border-radius": "0.5rem",
                 "flex-shrink": 0,
               }}
-              src={imgSrc}
+              src={"minipimg" + imgSrc}
             />
             <div
               style={{

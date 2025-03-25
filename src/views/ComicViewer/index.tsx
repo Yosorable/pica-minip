@@ -1,5 +1,5 @@
 import { For, Show, createSignal, onMount } from "solid-js";
-import { AllowZoom, LazyLoad, LongPress } from "../../utils";
+import { AllowZoom, HandleImg, LazyLoad, LongPress } from "../../utils";
 import { KVStore } from "../../store/KVStore";
 import { PicaApi2 } from "../../api/api";
 import { PicaComicImage } from "../../api/model";
@@ -73,7 +73,7 @@ export default function ComicViewer({
           });
         } else if (res.data === "preview") {
           const src = el.getAttribute("data-src");
-          if (src) previewImage(src);
+          if (src) previewImage(src.replace("minipimg", ""));
         }
       });
     });
@@ -95,7 +95,7 @@ export default function ComicViewer({
               height: "800px",
               transition: "opacity 1s",
             }}
-            data-src={item.media.fileServer + "/static/" + item.media.path}
+            data-src={"minipimg" + HandleImg(item.media)}
           />
         )}
       </For>
