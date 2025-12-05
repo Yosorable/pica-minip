@@ -15,7 +15,7 @@
 
      ![qrcode](./qrcode.png)
 
-   - 使用安装了 Minip App 的设备点击[此处](https://minip.lzyl.win/download?url=https%3A%2F%2Fgithub.com%2FMikazukiY%2Fpica-minip%2Freleases%2Flatest%2Fdownload%2Fpica-minip.zip)
+   - 使用安装了 Minip App 的设备点击[此处](https://minip.lzyl.win/download?url=https%3A%2F%2Fgithub.com%2FYosorable%2Fpica-minip%2Freleases%2Flatest%2Fdownload%2Fpica-minip.zip)
 
 ## 截图
 

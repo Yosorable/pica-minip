@@ -15,7 +15,7 @@ import "./index.css";
 import { createSignal, onMount, Show } from "solid-js";
 
 const CHECK_VERSION_URL =
-  "https://api.github.com/repos/MikazukiY/pica-minip/releases/latest";
+  "https://api.github.com/repos/Yosorable/pica-minip/releases/latest";
 
 function compareVersions(version1: string, version2: string): number {
   const v1 = version1.split(".").map(Number);
