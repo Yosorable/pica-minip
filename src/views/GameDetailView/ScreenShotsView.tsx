@@ -1,7 +1,6 @@
 import { For } from "solid-js";
-import { HandleImg } from "../../utils";
+import { HandleImg, previewImageWithAutoHidden } from "../../utils";
 import { PicaThumb } from "../../api/model";
-import { previewImage } from "minip-bridge";
 
 export function ScreenShotsView({
   screenshots,
@@ -21,8 +20,11 @@ export function ScreenShotsView({
       <For each={screenshots.slice(1)}>
         {(item) => (
           <img
-            onClick={() => {
-              previewImage(HandleImg(item));
+            onClick={(e) => {
+              previewImageWithAutoHidden(
+                HandleImg(item),
+                e.target as HTMLImageElement,
+              );
             }}
             style={{
               height: "12rem",

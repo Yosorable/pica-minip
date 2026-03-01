@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { previewImage } from "minip-bridge";
 
 export function HandleImg({ path }: { path: string }) {
   const fileServer = "https://s3.picacomic.com";
@@ -26,7 +27,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 export function LazyLoad(
   dom: HTMLElement,
-  onload?: (this: GlobalEventHandlers, ev: Event) => any
+  onload?: (this: GlobalEventHandlers, ev: Event) => any,
 ) {
   if (onload) {
     dom.onload = onload;
@@ -132,5 +133,21 @@ export function tap(dom: HTMLElement, callback: () => void) {
     dom.style.opacity = "1";
     isMoved = false;
     isTouched = false;
+  });
+}
+
+export function previewImageWithAutoHidden(url: string, img: HTMLImageElement) {
+  const rect = img.getBoundingClientRect();
+  img.style.visibility = "hidden";
+  return previewImage(url, {
+    rect: {
+      x: rect.x,
+      y: rect.y,
+      width: rect.width,
+      height: rect.height,
+    },
+    onClose() {
+      img.style.visibility = "";
+    },
   });
 }
