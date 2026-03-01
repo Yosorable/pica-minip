@@ -1,9 +1,9 @@
 import { createSignal, Show } from "solid-js";
-import { HandleImg, LazyLoad, previewImageWithAutoHidden } from "../../utils";
+import { HandleImg, LazyLoad } from "../../utils";
 import likesImg from "../../assets/icon_like.png";
 import { PicaComic } from "../../api/model";
 import "./index.css";
-import { navigateTo } from "minip-bridge";
+import { navigateTo, previewImage } from "minip-bridge";
 import SwipeOut from "../SwipeOut";
 
 function showTags(cats: string[]) {
@@ -39,7 +39,7 @@ export default function ComicItem({
             closeFunc()();
             return;
           }
-          previewImageWithAutoHidden(imgSrc, e.target as HTMLImageElement);
+          previewImage(imgSrc, { sourceImage: e.target as HTMLImageElement });
         }}
       />
       <div class="flex-1">

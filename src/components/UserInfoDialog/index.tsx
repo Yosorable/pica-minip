@@ -1,6 +1,7 @@
 import { Show } from "solid-js";
-import { HandleImg, previewImageWithAutoHidden } from "../../utils";
+import { HandleImg } from "../../utils";
 import defaultAvatar from "../../assets/placeholder_comicViewer.png";
+import { previewImage } from "minip-bridge";
 
 export default function UserInfoDialog({
   user,
@@ -31,10 +32,9 @@ export default function UserInfoDialog({
               e.preventDefault();
               e.stopPropagation();
               if (avatar) {
-                previewImageWithAutoHidden(
-                  HandleImg(avatar),
-                  e.target as HTMLImageElement,
-                );
+                previewImage(HandleImg(avatar), {
+                  sourceImage: e.target as HTMLImageElement,
+                });
               }
             }}
           />
@@ -49,10 +49,9 @@ export default function UserInfoDialog({
                 e.preventDefault();
                 e.stopPropagation();
                 if (avatar) {
-                  previewImageWithAutoHidden(
-                    HandleImg(avatar),
-                    e.target as HTMLImageElement,
-                  );
+                  previewImage(HandleImg(avatar), {
+                    sourceImage: e.target as HTMLImageElement,
+                  });
                 }
               }}
             />

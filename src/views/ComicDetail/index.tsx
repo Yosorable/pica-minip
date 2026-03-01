@@ -11,8 +11,8 @@ import { KVStore } from "../../store/KVStore";
 import { RecommendView } from "./RecommendView";
 import { PicaApi2 } from "../../api/api";
 import { PicaComicDetail, PicaEpisode } from "../../api/model";
-import { navigateTo } from "minip-bridge";
-import { HandleImg, previewImageWithAutoHidden } from "../../utils";
+import { navigateTo, previewImage } from "minip-bridge";
+import { HandleImg } from "../../utils";
 
 function ComicDetailView({ comic }: { comic: PicaComicDetail }) {
   const imgSrc = HandleImg(comic.thumb);
@@ -65,10 +65,9 @@ function ComicDetailView({ comic }: { comic: PicaComicDetail }) {
           >
             <img
               onclick={(e) => {
-                previewImageWithAutoHidden(
-                  imgSrc,
-                  e.target as HTMLImageElement,
-                );
+                previewImage(imgSrc, {
+                  sourceImage: e.target as HTMLImageElement,
+                });
               }}
               style={{
                 width: "7rem",

@@ -1,11 +1,5 @@
 import { For, Show, createSignal, onMount } from "solid-js";
-import {
-  AllowZoom,
-  HandleImg,
-  LazyLoad,
-  LongPress,
-  previewImageWithAutoHidden,
-} from "../../utils";
+import { AllowZoom, HandleImg, LazyLoad, LongPress } from "../../utils";
 import { KVStore } from "../../store/KVStore";
 import { PicaApi2 } from "../../api/api";
 import { PicaComicImage } from "../../api/model";
@@ -79,7 +73,8 @@ export default function ComicViewer({
           });
         } else if (res.data.action === "preview") {
           const src = el.getAttribute("data-src");
-          if (src) previewImageWithAutoHidden(src.replace("minipimg", ""), el);
+          if (src)
+            previewImage(src.replace("minipimg", ""), { sourceImage: el });
         }
       });
     });
